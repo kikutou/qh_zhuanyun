@@ -1,4 +1,4 @@
-﻿/****************************************** 
+/****************************************** 
 Use for:	会员样式
 Version:	1.00
 Date:		2013/10/18
@@ -8,13 +8,13 @@ Update:
 ******************************************/
 body{ }
 .pro-mod{ width:100%; padding:8px 0; min-width:1008px; min-height:1%; overflow:hidden; border-top:1px solid #D5D5D5;}
-.p-nav-list li.current a,.p-nav-list li a{ background:#f3f6e3;}
+.p-nav-list li.current a,.p-nav-list li a{ background:#e9f6fb;}
 /*个人中心*/
 .proInfo-mod{ background-color:#F8F8F8; border:1px solid #D7D7D7;}
 	.proInfo-hd{ padding-left:16px; padding-right:10px; height:50px; line-height:50px; border-bottom:1px solid #D7D7D7; position:relative;}
     	.proInfo-name{ font-size:14px; font-weight:700; color:#257CA1}
 		.proInfo-name span{ padding-left:8px; color:#666; font-size:12px; font-weight:400;}
-		.proInfo-cont .p-btn{ margin-top:5px; margin-left:12px; padding:5px 20px; height:22px; line-height:22px; font-size:14px; display:inline-block; float:none; border:1px solid #5A9610; background-color:#6CB80D;}
+		.proInfo-cont .p-btn{ margin-top:5px; margin-left:12px; padding:5px 20px; height:22px; line-height:22px; font-size:14px; display:inline-block; float:none; background-color:#FF8400; color: #fff;}
         .proInfo-cont .p-btn:hover{border-color:#4B7D0D; background-color:#61A50C;}
         .proInfo-cont{ color:#666;}
         .proInfo-cont strong{ padding:0 6px; font-size:16px; color:#F54302}
@@ -24,7 +24,7 @@ body{ }
         	.proInfo-v02 h3,.proInfo-v01 h3{ padding-bottom:8px; font-weight:700; color:#000;}
             .proInfo-v02 a,.proInfo-v02 a:hover,.proInfo-v01 a,.proInfo-v01 a:hover{ padding-right:16px; color:#25779E;}
       .col-sub .p-nav-info{ margin-top:0; border-top:none;}
-      .p-nav-hd{ padding:7px 0px 7px 8px; border-bottom:1px solid #D5E0EF; background:rgb(58, 109, 3); font-size:14px; font-weight:700;}
+      .p-nav-hd{ padding:7px 0px 7px 8px; border-bottom:1px solid #D5E0EF; background:#1D82AF; font-size:14px; font-weight:700;}
 	  
       .p-nav-info .p-nav-list li{ border-right:1px solid #D5E0EF;} 
         

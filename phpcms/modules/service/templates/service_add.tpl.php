@@ -9,7 +9,7 @@ include $this->admin_tpl('header', 'admin');
 	<tr>
 		<th><strong><?php echo L('service_type')?>：</strong></th>
 		<td><select name="service[type]" id="service_type">
-		<?
+		<?php
 		foreach($this->valuecategory() as $v){
 			echo '<option value="'.$v['value'].'">'.$v['title'].'</option>';
 		}

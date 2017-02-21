@@ -54,7 +54,7 @@ final class mysql {
 	public function connect() {
 		$func = $this->config['pconnect'] == 1 ? 'mysql_pconnect' : 'mysql_connect';
 		if(!$this->link = @$func($this->config['hostname'], $this->config['username'], $this->config['password'], 1)) {
-			$this->halt('Can not connect to MySQL server');
+			$this->halt('Can not connect to MySQL server at /phpcms/libs/classes/mysql.class.php'. $this->config['hostname'].$this->config['username'].$this->config['password']);
 			return false;
 		}
 

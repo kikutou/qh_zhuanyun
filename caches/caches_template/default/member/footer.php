@@ -21,7 +21,7 @@ td,th{border:0px; padding:0px;}
 		<?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"get\" data=\"op=get&tag_md5=119dc8d1d86963acd716fc929bebfb09&sql=select+%2A+from+t_category+where+catid%3E11&num=9&return=data2\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">编辑</a>";}pc_base::load_sys_class("get_model", "model", 0);$get_db = new get_model();$r = $get_db->sql_query("select * from t_category where catid>11 LIMIT 9");while(($s = $get_db->fetch_next()) != false) {$a[] = $s;}$data2 = $a;unset($a);?>
 				<?php $n=1;if(is_array($data2)) foreach($data2 AS $r) { ?>
 				<?php if($r[catid]==18 || $r[catid]==20 || $r[catid]==21) { ?>
-          <td width="152" align="center" valign="top" bgcolor="#667503"><label class="t_kind"><?php echo $r['catname'];?></label></td>
+          <td width="152" align="center" valign="top" bgcolor="#1a7599"><label class="t_kind"><?php echo $r['catname'];?></label></td>
 				<?php } ?>
 			<?php $n++;}unset($n); ?>
 		<?php if(defined('IN_ADMIN') && !defined('HTML')) {echo '</div>';}?>
@@ -29,7 +29,7 @@ td,th{border:0px; padding:0px;}
 		<?php if(defined('IN_ADMIN')  && !defined('HTML')) {echo "<div class=\"admin_piao\" pc_action=\"get\" data=\"op=get&tag_md5=76e85b2bb59cfc040086712be8dfc402&sql=select+%2A+from+t_category+where+catid%3E11&num=9&return=data3\"><a href=\"javascript:void(0)\" class=\"admin_piao_edit\">编辑</a>";}pc_base::load_sys_class("get_model", "model", 0);$get_db = new get_model();$r = $get_db->sql_query("select * from t_category where catid>11 LIMIT 9");while(($s = $get_db->fetch_next()) != false) {$a[] = $s;}$data3 = $a;unset($a);?>
 				<?php $n=1;if(is_array($data3)) foreach($data3 AS $rr) { ?>
 				<?php if($rr[catid]==12 || $rr[catid]==22 || $rr[catid]==23) { ?>
-          <td width="152" align="center" valign="top" bgcolor="#667503"><label class="t_kind"><?php echo $rr['catname'];?></label></td>
+          <td width="152" align="center" valign="top" bgcolor="#1a7599"><label class="t_kind"><?php echo $rr['catname'];?></label></td>
 				<?php } ?>
 			<?php $n++;}unset($n); ?>
 		<?php if(defined('IN_ADMIN') && !defined('HTML')) {echo '</div>';}?>

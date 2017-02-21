@@ -2,8 +2,8 @@
 <html>
 <head>
  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
- <meta http-equiv="pragma" content="no-cache"> 
- <meta http-equiv="Cache-Control" content="no-cache, must-revalidate"> 
+ <meta http-equiv="pragma" content="no-cache">
+ <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
  <meta http-equiv="expires" content="Wed, 26 Feb 1997 08:21:57 GMT">
  <meta http-equiv="expires" content="0">
 
@@ -16,14 +16,14 @@
 <link rel="stylesheet" href="{CSS_PATH}lrtk.css" type="text/css" media="all" />
 <link rel="stylesheet" href="{CSS_PATH}lrtk2.css" type="text/css" media="all" />
 <link rel="stylesheet" href="{CSS_PATH}top.css" type="text/css" media="all" />
-<link href="/favicon.ico" rel="shortcut icon">  
+<link href="/favicon.ico" rel="shortcut icon">
   <!--[if lt IE 9]>
   <script type="text/javascript" src="{JS_PATH}html5.js"></script>
   <![endif]-->
   <!--[if IE 6]>
     <script type="text/javascript" src="{JS_PATH}CC_belatedPNG.js" ></script>
     <script type="text/javascript">CC_belatedPNG.fix('img,.h-btn,.nav');</script>
-  <![endif]-->  
+  <![endif]-->
    <script type="text/javascript" src="{JS_PATH}jquery-1.9.1.min.js"></script>
    <script type="text/javascript" src="{JS_PATH}layer.min.js"></script>
   <script type="text/javascript" src="{JS_PATH}jquery.js"></script>
@@ -103,23 +103,23 @@ ul,li{list-style-type:none;margin:0px;}
 </head>
 <body id="channel1">
 	<div class="wrap">
-    	
- <script language="javascript"> 
+
+ <script language="javascript">
 
 /*
-function setHomePage1(o){ 
- try {    
+function setHomePage1(o){
+ try {
 	o.style.behavior='url(#default#homepage)';
 	o.setHomePage('{siteurl($siteid)}/');
-     } catch (e) {    
+     } catch (e) {
     dialog_alert("你的浏器览不支持设为首页操作，请自行设置!");
    }
-} 
- 
-function addFavorite(){ 
- try {    
+}
+
+function addFavorite(){
+ try {
 	window.external.AddFavorite("{siteurl($siteid)}/","讯立快运  - 您的私人快运公司");
-     } catch (e) {    
+     } catch (e) {
     dialog_alert("你的浏器览不支持收藏操作，请收藏!");
    }
 } */
@@ -161,22 +161,22 @@ try {
     var oUrlLink =          WshShell.CreateShortcut(WshShell.SpecialFolders("Desktop")     + "\\" + sName + ".url");
     oUrlLink.TargetPath = sUrl;
     oUrlLink.Save();
-    }  
-catch(e)  {  
-          alert("当前IE安全级别不允许操作！");  
+    }
+catch(e)  {
+          alert("当前IE安全级别不允许操作！");
 }
-}    
- 
-</script> 
+}
 
- 
+</script>
+
+
 	<!--S 头部-->
     	<header class="header" style="border-bottom:1px solid #fff;">
-		
+
         	<div class="layout header-mod clearfix">
             	<!--S 头部栏目-->
             	<div class="top-nav">
-				
+
                 	<ul class="top-nList clearfix">
 						<li style="width:255px;">
 							<div class="t_news">
@@ -195,8 +195,8 @@ catch(e)  {
 						<li style="width:185px;padding-right:15px;">
 						<script type="text/javascript">document.write('<iframe src="{APP_PATH}index.php?m=member&c=index&a=mini&forward='+encodeURIComponent(location.href)+'&siteid={get_siteid()}" allowTransparency="true"  width="200" height="24" frameborder="0" scrolling="no"></iframe>')</script>
 						</li>
-						
- 
+
+
                         <!--新消息
                         <li class="h-nLine">|</li>
                         <li><a href="###" class="h-yMessage radius-three">消息<em>2</em></a></li>
@@ -209,33 +209,52 @@ catch(e)  {
                 </div>
                 <!--E 头部栏目-->
 				{php $sinfo=siteinfo(1);}
-            	<h1 class="fl logo"><a href="{siteurl($siteid)}/" title="{$SEO['site_title']}" style="background:url({$sinfo['logo']});">{$SEO['site_title']}</a></h1>
-               
-			<div style="float:left; padding-top: 50px; padding-left: 160px; font-family: 宋体; font-size: 18px; color:#747474;">统一客服热线：{$sinfo['public_tel']}</div>
-			<div style="float:right; padding-top:48px; width:103px;">
-				
+            	<!--<h1 class="fl logo"><a href="{siteurl($siteid)}/" title="{$SEO['site_title']}" style="background:url({$sinfo['logo']});">{$SEO['site_title']}</a></h1>-->
+				<h1 class="fl logo"><a href="http://skyfaithjp.com/" title="日本转运_日本亚马逊_乐天_日本海淘首选日本转运公司_日本转运" style="background:url(/uploadfile/2016/0618/20160618081814313.png);">日本转运_日本亚马逊_乐天_日本海淘首选日本转运公司_日本转运</a></h1>
 
-                        {pc:get sql="SELECT * from t_poster where spaceid=11 and disabled=0 order by listorder " num="3"  return="addata" }
-						{php $k=0;}
-						{loop $addata $rs}
-						{php $settings=string2array($rs[setting])}
-					   <div class="{if $k==0}weixin{elseif $k==1}wtel{elseif $k==2}weibo{/if}" onmouseover="this.className = '{if $k==0}weixin on{elseif $k==1}wtel on{elseif $k==2}weibo on{/if}';" onmouseout="this.className = '{if $k==0}weixin{elseif $k==1}wtel{elseif $k==2}weibo{/if}';">
-							<a href="javascript:;"></a>
-							<div class="{if $k==0}weixin_nr{elseif $k==1}wtel_nr{elseif $k==2}weibo_nr{/if}">
-								<div class="arrow"></div>
-								<img src="{$settings[1][imageurl]}" width="120" height="120" />
-								{$settings[1][alt]}
-							</div>
-						</div>
-						{php $k++;}
-						{/loop}
-						{/pc}
-					
-                    
+				<div style="float:left; padding-top: 50px; padding-left: 160px; font-family: 宋体; font-size: 18px; color:#747474;">统一客服热线：{$sinfo['public_tel']}</div>
+			<div style="float:right; padding-top:48px; width:103px;">
+
+
+                        <!--{pc:get sql="SELECT * from t_poster where spaceid=11 and disabled=0 order by listorder " num="3"  return="addata" }-->
+						<!--{php $k=0;}-->
+						<!--{loop $addata $rs}-->
+						<!--{php $settings=string2array($rs[setting])}-->
+					   <!--<div class="{if $k==0}weixin{elseif $k==1}wtel{elseif $k==2}weibo{/if}" onmouseover="this.className = '{if $k==0}weixin on{elseif $k==1}wtel on{elseif $k==2}weibo on{/if}';" onmouseout="this.className = '{if $k==0}weixin{elseif $k==1}wtel{elseif $k==2}weibo{/if}';">-->
+							<!--<a href="javascript:;"></a>-->
+							<!--<div class="{if $k==0}weixin_nr{elseif $k==1}wtel_nr{elseif $k==2}weibo_nr{/if}">-->
+								<!--<div class="arrow"></div>-->
+								<!--<img src="{$settings[1][imageurl]}" width="120" height="120" />-->
+								<!--{$settings[1][alt]}-->
+							<!--</div>-->
+						<!--</div>-->
+						<!--{php $k++;}-->
+						<!--{/loop}-->
+						<!--{/pc}-->
+
+				<div class="weixin" onmouseover="this.className = 'weixin on';" onmouseout="this.className = 'weixin';">
+					<a href="javascript:;"></a>
+					<div class="weixin_nr">
+						<div class="arrow"></div>
+						<img src="/uploadfile/2015/0713/20150713125225316.jpg" width="120" height="120" />
+						关注微信
+					</div>
+				</div>
+				<div class="wtel" onmouseover="this.className = 'wtel on';" onmouseout="this.className = 'wtel';">
+					<a href="javascript:;"></a>
+					<div class="wtel_nr">
+						<div class="arrow"></div>
+						<img src="/uploadfile/2015/0612/20150612053426294.png" width="120" height="120" />
+						手机版
+					</div>
+				</div>
+
+
+
 			</div>
 
-			
-          	
+
+
             </div><!--E .header-mod-->
         </header>
         <!--E 头部-->
@@ -252,7 +271,7 @@ catch(e)  {
 					if($ccatid==6)
 						$ccatid=12;
 					?>
-               
+
 <style>
 *{ margin:0; padding:0; list-style:none;}
 .nav-mList li .second a{background:#9eb40a; padding:0 33px; border-top:1px solid #f6f6f6;}
@@ -273,12 +292,12 @@ catch(e)  {
 						</div>
 						{/if}
 						{/pc}
-						
+
                 	</li>
 				{/if}
                 {/loop}
 				{/pc}
-                	
+
  <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
 <script>
 $(function(){
@@ -297,8 +316,8 @@ $(function(){
 		});
 	}
 });
-</script>               	
- 
+</script>
+
                     </ul>
                 </div><!--E .main-nav-->
             </div><!--E .nav-mod-->
@@ -306,3 +325,10 @@ $(function(){
 		<div style="background:url(/resource/images/nav_bottom3.png) repeat-x; height:15px;"></div>
         <!--E 导航-->
 		</div>
+
+
+	</div><!--E .nav-mod-->
+	</div>
+	<div style="background:url(/resource/images/nav_bottom3.png) repeat-x; height:15px;"></div>
+	<!--E 导航-->
+	</div>

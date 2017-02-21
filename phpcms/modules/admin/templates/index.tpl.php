@@ -37,103 +37,152 @@ var checkhash = '<?php echo $_SESSION['checkhash']?>'
 .bg_btn{background: url(<?php echo IMG_PATH?>admin_img/icon2.jpg) no-repeat; width:32px; height:32px;}
 </style>
 </head>
+
 <body scroll="no" class="objbody">
-<div class="btns btns2" id="btnx" style="display:none">
-<div class="bg_btn"></div>
-<?php $model_types = pc_base::load_config('model_config');?>
-<h6><?php echo L('panel_switch');?></h6>
-<ul id="Site_model" class="pd4">
-		<li onclick="_Site_M();" class="ac"><span><?php echo L('full_menu')?></span></li>
-		<?php if (is_array($model_types)) { foreach ($model_types as $mt => $mn) {?>
-		<li onclick="_Site_M('<?php echo $mt;?>');"><span><?php echo $mn;?></span></li>
-		<?php } }?>
-	</ul>
-</div>
-<div id="dvLockScreen" class="ScreenLock" style="display:<?php if(isset($_SESSION['lock_screen']) && $_SESSION['lock_screen']==0) echo 'none';?>">
-    <div id="dvLockScreenWin" class="inputpwd">
-    <h5><b class="ico ico-info"></b><span id="lock_tips"><?php echo L('lockscreen_status');?></span></h5>
-    <div class="input">
-    	<label class="lb"><?php echo L('password')?>：</label><input type="password" id="lock_password" class="input-text" size="24">
-        <input type="submit" class="submit" value="&nbsp;" name="dosubmit" onclick="check_screenlock();return false;">
-    </div></div>
-</div>
-<div class="header">
-	<div class="logo lf"><a href="<?php echo $currentsite['domain']?>?m=admin" target="_blank"><span class="invisible"><?php echo L('phpcms_title')?></span></a></div>
-    <div class="rt-col">
-    	<div class="tab_style white cut_line text-r" style="display:none">
-    <ul id="Skin">
-		<li class="s1 styleswitch" rel="styles1"></li>
-		<li class="s2 styleswitch" rel="styles2"></li>
-		<li class="s3 styleswitch" rel="styles3"></li>
-        <li class="s4 styleswitch" rel="styles4"></li>
-	</ul>
-        </div>
-    </div>
-    <div class="col-auto">
-    	<div class="log white cut_line"><?php echo L('hello'),$admin_username?>  [<?php echo $rolename?>]<span>|</span><a href="?m=admin&c=index&a=public_logout">[<?php echo L('exit')?>]</a><span>|</span>
-    		<a href="<?php echo $currentsite['domain']?>" target="_blank" id="site_homepage"><?php echo L('site_homepage')?></a><span>|</span>
-    		<a href="?m=member" target="_blank"><?php echo L('member_center')?></a><span>|</span>
-			<a href="?m=admin"><?php echo L('后台首页')?></a><span>|</span>
-    		<a href="?m=search" target="_blank" id="site_search" style="display:none;"><?php echo L('search')?></a>
-    	</div>
-        <ul class="nav white" id="top_menu">
-        <?php
-        $array = admin::admin_menu(0);
-        foreach($array as $_value) {
-        	if($_value['id']==10) {
-        		echo '<li id="_M'.$_value['id'].'" class="on top_menu"><a href="javascript:_M('.$_value['id'].',\'?m='.$_value['m'].'&c='.$_value['c'].'&a='.$_value['a'].'\')" hidefocus="true" style="outline:none;">'.L($_value['name']).'</a></li>';
-        		
-        	} else {
-        		echo '<li id="_M'.$_value['id'].'" class="top_menu"><a href="javascript:_M('.$_value['id'].',\'?m='.$_value['m'].'&c='.$_value['c'].'&a='.$_value['a'].'\')"  hidefocus="true" style="outline:none;">'.L($_value['name']).'</a></li>';
-        	}      	
-        }
-        ?>
-            <li class="tab_web" style="display:none"><a href="javascript:;"><span><?php echo $currentsite['name']?></span></a></li>
-        </ul>
-    </div>
-</div>
-<div id="content">
-	<div class="col-left left_menu">
-    	<div id="Scroll"><div id="leftMain"></div></div>
-        <a href="javascript:;" id="openClose" style="outline-style: none; outline-color: invert; outline-width: medium;" hideFocus="hidefocus" class="open" title="<?php echo L('spread_or_closed')?>"><span class="hidden"><?php echo L('expand')?></span></a>
-    </div>
-	<div class="col-1 lf cat-menu" id="display_center_id" style="display:none" height="100%">
-	<div class="content">
-        	<iframe name="center_frame" id="center_frame" src="" frameborder="false" scrolling="auto" style="border:none" width="100%" height="auto" allowtransparency="true"></iframe>
-            </div>
-        </div>
-    <div class="col-auto mr8">
-    <div class="crumbs">
-    <div class="shortcut cu-span"><a href="?m=content&c=create_html&a=public_index&checkhash=<?php echo $_SESSION['checkhash'];?>" target="right"><span><?php echo L('create_index')?></span></a><a href="?m=admin&c=cache_all&a=init&checkhash=<?php echo $_SESSION['checkhash'];?>" target="right"><span><?php echo L('update_backup')?></span></a><a href="javascript:art.dialog({id:'map',iframe:'?m=admin&c=index&a=public_map', title:'<?php echo L('background_map')?>', width:'700', height:'500', lock:true});void(0);"><span><?php echo L('background_map')?></span></a><?php echo runhook('admin_top_left_menu')?></div>
-    <?php echo L('current_position')?><span id="current_pos"></span></div>
-    	<div class="col-1">
-        	<div class="content" style="position:relative; overflow:hidden">
-                <iframe name="right" id="rightMain" src="?m=admin&c=index&a=public_main" frameborder="false" scrolling="auto" style="border:none; margin-bottom:30px" width="100%" height="auto" allowtransparency="true"></iframe>
-                <div class="fav-nav">
-					<div id="panellist">
-						<?php foreach($adminpanel as $v) {?>
-								<span>
-								<a onclick="paneladdclass(this);" target="right" href="<?php echo $v['url'].'menuid='.$v['menuid'].'&checkhash='.$_SESSION['checkhash'];?>"><?php echo L($v['name'])?></a>
-								<a class="panel-delete" href="javascript:delete_panel(<?php echo $v['menuid']?>, this);"></a></span>
-						<?php }?>
-					</div>
-					<div id="paneladd"></div>
-					<input type="hidden" id="menuid" value="">
-					<input type="hidden" id="bigid" value="" />
-                    <div id="help" class="fav-help"></div>
-				</div>
+
+	<div class="btns btns2" id="btnx" style="display:none">
+		<div class="bg_btn"></div>
+		<?php $model_types = pc_base::load_config('model_config');?>
+		<h6><?php echo L('panel_switch');?></h6>
+		<ul id="Site_model" class="pd4">
+			<li onclick="_Site_M();" class="ac"><span><?php echo L('full_menu')?></span></li>
+			<?php if (is_array($model_types)) { foreach ($model_types as $mt => $mn) {?>
+				<li onclick="_Site_M('<?php echo $mt;?>');"><span><?php echo $mn;?></span></li>
+			<?php } }?>
+		</ul>
+	</div>
+
+	<!-- 锁屏界面（未安装）-->
+	<div id="dvLockScreen" class="ScreenLock" style="display:<?php if(isset($_SESSION['lock_screen']) && $_SESSION['lock_screen']==0) echo 'none';?>">
+		<div id="dvLockScreenWin" class="inputpwd">
+			<h5><b class="ico ico-info"></b><span id="lock_tips"><?php echo L('lockscreen_status');?></span></h5>
+			<div class="input">
+				<label class="lb">
+					<?php echo L('password')?>：
+				</label>
+				<input type="password" id="lock_password" class="input-text" size="24">
+				<input type="submit" class="submit" value="&nbsp;" name="dosubmit" onclick="check_screenlock();return false;">
+			</div>
+		</div>
+	</div>
+
+	<!-- 头部信息 此处将不必要的信息隐藏 -->
+	<div class="header">
+
+		<div class="logo lf">
+			<a href="<?php echo $currentsite['domain']?>?m=admin" target="_blank"><span class="invisible"><?php echo L('phpcms_title')?></span></a>
+		</div>
+
+		<div class="rt-col">
+    		<div class="tab_style white cut_line text-r" style="display:none">
+    			<ul id="Skin">
+					<li class="s1 styleswitch" rel="styles1"></li>
+					<li class="s2 styleswitch" rel="styles2"></li>
+					<li class="s3 styleswitch" rel="styles3"></li>
+        			<li class="s4 styleswitch" rel="styles4"></li>
+				</ul>
         	</div>
-        </div>
-    </div>
-</div>
-<div class="tab-web-panel hidden" style="position:absolute; z-index:999; background:#fff">
-<ul>
-<?php foreach ($sitelist as $key=>$v):?>
-	<li style="margin:0"><a href="javascript:site_select(<?php echo $v['siteid']?>, '<?php echo new_addslashes($v['name'])?>', '<?php echo $v['domain']?>', '<?php echo $v['siteid']?>')"><?php echo $v['name']?></a></li>
-<?php endforeach;?>
-</ul>
-</div>
-<div class="scroll"><a href="javascript:;" class="per" title="使用鼠标滚轴滚动侧栏" onclick="menuScroll(1);"></a><a href="javascript:;" class="next" title="使用鼠标滚轴滚动侧栏" onclick="menuScroll(2);"></a></div>
+    	</div>
+
+		<div class="col-auto">
+    		<div class="log white cut_line">
+				<?php echo L('hello'),$admin_username?>  [<?php echo $rolename?>]<span>|</span><a href="?m=admin&c=index&a=public_logout">[<?php echo L('exit')?>]</a><span>|</span>
+    			<a href="<?php echo $currentsite['domain']?>" target="_blank" id="site_homepage"><?php echo L('site_homepage')?></a><span>|</span>
+    			<a href="?m=member" target="_blank"><?php echo L('member_center')?></a><span>|</span>
+				<a href="?m=admin"><?php echo L('后台首页')?></a><span>|</span>
+    			<a href="?m=search" target="_blank" id="site_search" style="display:none;"><?php echo L('search')?></a>
+    		</div>
+        	<ul class="nav white" id="top_menu">
+        		<?php
+        			$array = admin::admin_menu(0);
+					foreach($array as $_value) {
+
+						//TODO 此处添加代码隐藏‘内容’，‘营销’，‘系统’，‘扩展’标签
+						//TODO add by kiku 2016/06/07
+						/*$blackList = array('内容', '营销', '系统', '扩展');
+						if( in_array(L($_value['name']), $blackList) ){
+							continue;
+						}
+						*/
+
+
+						if($_value['id']==10) {
+							echo '<li id="_M'.$_value['id'].'" class="on top_menu"><a href="javascript:_M('.$_value['id'].',\'?m='.$_value['m'].'&c='.$_value['c'].'&a='.$_value['a'].'\')" hidefocus="true" style="outline:none;">'.L($_value['name']).'</a></li>';
+						} else {
+							echo '<li id="_M'.$_value['id'].'" class="top_menu"><a href="javascript:_M('.$_value['id'].',\'?m='.$_value['m'].'&c='.$_value['c'].'&a='.$_value['a'].'\')"  hidefocus="true" style="outline:none;">'.L($_value['name']).'</a></li>';
+						}
+					}
+        		?>
+            	<li class="tab_web" style="display:none"><a href="javascript:;"><span><?php echo $currentsite['name']?></span></a></li>
+        	</ul>
+    	</div>
+	</div>
+
+
+	<div id="content">
+
+		<!-- 左边栏 -->
+		<div class="col-left left_menu">
+			<div id="Scroll">
+				<div id="leftMain"></div>
+			</div>
+			<a href="javascript:;" id="openClose" style="outline-style: none; outline-color: invert; outline-width: medium;" hideFocus="hidefocus" class="open" title="<?php echo L('spread_or_closed')?>"><span class="hidden"><?php echo L('expand')?></span></a>
+		</div>
+
+		<div class="col-1 lf cat-menu" id="display_center_id" style="display:none" height="100%">
+			<div class="content">
+				<iframe name="center_frame" id="center_frame" src="" frameborder="false" scrolling="auto" style="border:none" width="100%" height="auto" allowtransparency="true"></iframe>
+			</div>
+		</div>
+
+		<div class="col-auto mr8">
+			<div class="crumbs">
+				<div class="shortcut cu-span">
+					<a href="?m=content&c=create_html&a=public_index&checkhash=<?php echo $_SESSION['checkhash'];?>" target="right"><span><?php echo L('create_index')?></span></a>
+					<a href="?m=admin&c=cache_all&a=init&checkhash=<?php echo $_SESSION['checkhash'];?>" target="right"><span><?php echo L('update_backup')?></span></a>
+					<a href="javascript:art.dialog({id:'map',iframe:'?m=admin&c=index&a=public_map', title:'<?php echo L('background_map')?>', width:'700', height:'500', lock:true});void(0);"><span><?php echo L('background_map')?></span></a>
+					<?php echo runhook('admin_top_left_menu')?>
+				</div>
+				<?php echo L('current_position')?><span id="current_pos"></span>
+			</div>
+
+			<div class="col-1">
+				<div class="content" style="position:relative; overflow:hidden">
+					<iframe name="right" id="rightMain" src="?m=admin&c=index&a=public_main" frameborder="false" scrolling="auto" style="border:none; margin-bottom:30px" width="100%" height="auto" allowtransparency="true"></iframe>
+					<div class="fav-nav">
+						<div id="panellist">
+							<?php foreach($adminpanel as $v) {?>
+									<span>
+									<a onclick="paneladdclass(this);" target="right" href="<?php echo $v['url'].'menuid='.$v['menuid'].'&checkhash='.$_SESSION['checkhash'];?>"><?php echo L($v['name'])?></a>
+									<a class="panel-delete" href="javascript:delete_panel(<?php echo $v['menuid']?>, this);"></a></span>
+							<?php }?>
+						</div>
+						<div id="paneladd"></div>
+						<input type="hidden" id="menuid" value="">
+						<input type="hidden" id="bigid" value="" />
+						<div id="help" class="fav-help"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+
+	<div class="tab-web-panel hidden" style="position:absolute; z-index:999; background:#fff">
+		<ul>
+			<?php foreach ($sitelist as $key=>$v):?>
+				<li style="margin:0"><a href="javascript:site_select(<?php echo $v['siteid']?>, '<?php echo new_addslashes($v['name'])?>', '<?php echo $v['domain']?>', '<?php echo $v['siteid']?>')"><?php echo $v['name']?></a></li>
+			<?php endforeach;?>
+		</ul>
+	</div>
+
+	<div class="scroll">
+		<a href="javascript:;" class="per" title="使用鼠标滚轴滚动侧栏" onclick="menuScroll(1);"></a>
+		<a href="javascript:;" class="next" title="使用鼠标滚轴滚动侧栏" onclick="menuScroll(2);"></a>
+	</div>
+
+
 <script type="text/javascript"> 
 if(!Array.prototype.map)
 Array.prototype.map = function(fn,scope) {
@@ -152,6 +201,7 @@ return ["Height","Width"].map(function(name){
 	document.compatMode === "CSS1Compat" && document.documentElement[ "client" + name ] || document.body[ "client" + name ]
 });
 }
+
 window.onload = function (){
 	if(!+"\v1" && !document.querySelector) { // for IE6 IE7
 	  document.body.onresize = resize;
@@ -163,6 +213,7 @@ window.onload = function (){
 		return false;
 	}
 }
+
 function wSize(){
 	//这是一字符串
 	var str=getWindowSize();
@@ -189,6 +240,7 @@ function wSize(){
 	windowW();
 }
 wSize();
+
 function windowW(){
 	if($('#Scroll').height()<$("#leftMain").height()){
 		$(".scroll").show();
@@ -197,6 +249,7 @@ function windowW(){
 	}
 }
 windowW();
+
 //站点下拉菜单
 $(function(){
 	var offset = $(".tab_web").offset();
@@ -220,6 +273,7 @@ $(function(){
 	$("#Site_model li").hover(function(){$(this).toggleClass("hvs");},function(){$(this).toggleClass("hvs");});
 	$("#Site_model li").click(function(){$("#Site_model li").removeClass("ac"); $(this).addClass("ac");});
 })
+
 //站点选择
 function site_select(id,name, domain, siteid) {
 	$(".tab_web span").html(name);
@@ -233,6 +287,7 @@ function site_select(id,name, domain, siteid) {
 	$('#site_homepage').attr('href', domain);
 	$('#site_search').attr('href', 'index.php?m=search&siteid='+siteid);
 }
+
 //隐藏站点下拉。
 var s = 0;
 var h;
@@ -244,9 +299,11 @@ function hidden_site_list() {
 		s = 0;
 	}
 }
+
 function clearh(){
 	if(h)clearInterval(h);
 }
+
 function hidden_site_list_1() {
 	h = setInterval("hidden_site_list()", 1);
 }
@@ -297,6 +354,7 @@ function _M(menuid,targetUrl) {
 	$("#openClose").data('clicknum', 0);
 	$("#current_pos").data('clicknum', 1);
 }
+
 function _MP(menuid,targetUrl) {
 	$("#menuid").val(menuid);
 	$("#paneladd").html('<a class="panel-add" href="javascript:add_panel();"><em><?php echo L('add')?></em></a>');
@@ -311,8 +369,6 @@ function _MP(menuid,targetUrl) {
 	
 }
 
-
-
 function add_panel() {
 	var menuid = $("#menuid").val();
 	$.ajax({
@@ -326,6 +382,7 @@ function add_panel() {
 		}
 	});
 }
+
 function delete_panel(menuid, id) {
 	$.ajax({
 		type: "POST",
@@ -342,13 +399,16 @@ function paneladdclass(id) {
 	$(id).addClass('on')
 }
 setInterval("session_life()", 160000);
+
 function session_life() {
 	$.get("?m=admin&c=index&a=public_session_life");
 }
+
 function lock_screen() {
 	$.get("?m=admin&c=index&a=public_lock_screen");
 	$('#dvLockScreen').css('display','');
 }
+
 function check_screenlock() {
 	var lock_password = $('#lock_password').val();
 	if(lock_password=='') {
@@ -406,6 +466,7 @@ $(document).bind('keydown', 'return', function(evt){check_screenlock();return fa
     }, false);
 	
 })();
+
 function menuScroll(num){
 	var Scroll = document.getElementById('Scroll');
 	if(num==1){
@@ -414,6 +475,7 @@ function menuScroll(num){
 		Scroll.scrollTop = Scroll.scrollTop + 60;
 	}
 }
+
 function _Site_M(project) {
 	var id = '';
 	$('#top_menu li').each(function (){

@@ -1,7 +1,7 @@
 <?php defined('IN_PHPCMS') or exit('No permission resources.'); ?> <div class="col-sub">
 					<div class="p-nav p-nav-info">
 				
-						<div class="p-nav-hd" style="background:rgb(107, 9, 121);">
+						<div class="p-nav-hd" style="background:#1D82AF;">
 						<a href="/index.php?m=member&siteid=1" style="color:#fff">仓库地址</a>
 						</div>
 						

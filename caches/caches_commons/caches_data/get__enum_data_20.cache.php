@@ -48,7 +48,7 @@ return array (
     'siteid' => '1',
     'groupid' => '20',
     'title' => '其他服务',
-    'value' => '',
+    'value' => 'other',
     'username' => 'admin',
     'addtime' => '1436081370',
     'listorder' => '0',

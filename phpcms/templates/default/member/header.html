@@ -114,7 +114,8 @@
         	<div id="head" style="height:98px; overflow:visible;">
             	<div class="head_w">
 					{php $sinfo=siteinfo(1);}
-                	<a href="/" class="logo" style="background:url({$sinfo['logo']}); padding:0;">日本转运</a>
+                	<!--<a href="/" class="logo" style="background:url({$sinfo['logo']}); padding:0;">日本转运</a>-->
+					<a href="/" class="logo" style="background:url(/uploadfile/2016/0618/20160618081814313.png); padding:0;">日本转运</a>
 					<div class="top-nav" style="left:493px; width:550px;">
 						<ul class="top-nList clearfix">
 							<li style="width:250px;">
@@ -141,21 +142,40 @@
                 	<div class="w_sina" style="left:370px; width:706px; top:43px;">
                     	<div style="float:left; padding-top: 8px; padding-left: 40px; font-family: 宋体; font-size: 18px; color:#747474;">统一客服热线：{$sinfo['public_tel']}</div>
 						<div style="float:right; padding-top:3px;">
-                     		{pc:get sql="SELECT * from t_poster where spaceid=11 and disabled=0 order by listorder " num="3"  return="addata" }
-								{php $k=0;}
-								{loop $addata $rs}
-									{php $settings=string2array($rs[setting])}
-									<div class="{if $k==0}weixin{elseif $k==1}wtel{elseif $k==2}weibo{/if}" onmouseover="this.className = '{if $k==0}weixin on{elseif $k==1}wtel on{elseif $k==2}weibo on{/if}';" onmouseout="this.className = '{if $k==0}weixin{elseif $k==1}wtel{elseif $k==2}weibo{/if}';">
-										<a href="javascript:;"></a>
-										<div class="{if $k==0}weixin_nr{elseif $k==1}wtel_nr{elseif $k==2}weibo_nr{/if}">
-											<div class="arrow"></div>
-											<img src="{$settings[1][imageurl]}" width="120" height="120" />
-											{$settings[1][alt]}
-										</div>
-									</div>
-									{php $k++;}
-								{/loop}
-							{/pc}
+                     		<!--{pc:get sql="SELECT * from t_poster where spaceid=11 and disabled=0 order by listorder " num="3"  return="addata" }-->
+								<!--{php $k=0;}-->
+								<!--{loop $addata $rs}-->
+									<!--{php $settings=string2array($rs[setting])}-->
+									<!--<div class="{if $k==0}weixin{elseif $k==1}wtel{elseif $k==2}weibo{/if}" onmouseover="this.className = '{if $k==0}weixin on{elseif $k==1}wtel on{elseif $k==2}weibo on{/if}';" onmouseout="this.className = '{if $k==0}weixin{elseif $k==1}wtel{elseif $k==2}weibo{/if}';">-->
+										<!--<a href="javascript:;"></a>-->
+										<!--<div class="{if $k==0}weixin_nr{elseif $k==1}wtel_nr{elseif $k==2}weibo_nr{/if}">-->
+											<!--<div class="arrow"></div>-->
+											<!--<img src="{$settings[1][imageurl]}" width="120" height="120" />-->
+											<!--{$settings[1][alt]}-->
+										<!--</div>-->
+									<!--</div>-->
+									<!--{php $k++;}-->
+									<!---->
+							<!--&lt;!&ndash;add by kiku&ndash;&gt;-->
+								<!--{/loop}-->
+							<!--{/pc}-->
+
+							<div class="weixin" onmouseover="this.className = 'weixin on';" onmouseout="this.className = 'weixin';">
+								<a href="javascript:;"></a>
+								<div class="weixin_nr">
+									<div class="arrow"></div>
+									<img src="/uploadfile/2015/0713/20150713125225316.jpg" width="120" height="120" />
+									关注微信
+								</div>
+							</div>
+							<div class="wtel" onmouseover="this.className = 'wtel on';" onmouseout="this.className = 'wtel';">
+								<a href="javascript:;"></a>
+								<div class="wtel_nr">
+									<div class="arrow"></div>
+									<img src="/uploadfile/2015/0612/20150612053426294.png" width="120" height="120" />
+									手机版
+								</div>
+							</div>
 					
 						</div>
                 	</div>

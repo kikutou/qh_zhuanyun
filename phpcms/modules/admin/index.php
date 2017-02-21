@@ -3,6 +3,7 @@ defined('IN_PHPCMS') or exit('No permission resources.');
 pc_base::load_app_class('admin','admin',0);
 
 class index extends admin {
+
 	public function __construct() {
 		parent::__construct();
 		$this->db = pc_base::load_model('admin_model');
@@ -256,6 +257,14 @@ class index extends admin {
 		$datas = admin::admin_menu($menuid);
 		if (isset($_GET['parentid']) && $parentid = intval($_GET['parentid']) ? intval($_GET['parentid']) : 10) {
 			foreach($datas as $_value) {
+
+				//TODO 过滤掉多余的左边栏
+				//TODO fixed by kiku 2016/06/07
+				$blackList = array('手机版设置','站点管理','基本设置','安全设置','APP设置','connect');
+				if(in_array(L($_value['name']), $blackList)){
+					continue;
+				}
+
 	        	if($parentid==$_value['id']) {
 	        		echo '<li id="_M'.$_value['id'].'" class="on top_menu"><a href="javascript:_M('.$_value['id'].',\'?m='.$_value['m'].'&c='.$_value['c'].'&a='.$_value['a'].'\')" hidefocus="true" style="outline:none;">'.L($_value['name']).'</a></li>';
 	        		
@@ -306,6 +315,8 @@ class index extends admin {
 		}
 		exit;
 	}
+
+
 	public function public_main() {
 		pc_base::load_app_func('global');
 		pc_base::load_app_func('admin');
@@ -337,6 +348,7 @@ class index extends admin {
 		ob_end_clean();
 		system_information($data);
 	}
+
 	/**
 	 * 维持 session 登陆状态
 	 */
@@ -344,12 +356,15 @@ class index extends admin {
 		$userid = $_SESSION['userid'];
 		return true;
 	}
+
+
 	/**
 	 * 锁屏
 	 */
 	public function public_lock_screen() {
 		$_SESSION['lock_screen'] = 1;
 	}
+
 	public function public_login_screenlock() {
 		if(empty($_GET['lock_password'])) showmessage(L('password_can_not_be_empty'));
 		//密码错误剩余重试次数

@@ -2,6 +2,19 @@
 return array (
   0 => 
   array (
+    'aid' => '13',
+    'siteid' => '1',
+    'title' => '保险',
+    'username' => 'admin',
+    'addtime' => '1385531077',
+    'type' => 'value-added',
+    'remark' => 'EMS最大200万日元,其他线路最大12万日元;投保前请阅读投保须知。<a href="/index.php?m=content&c=index&a=lists&catid=28" target=_blank style="color:#ff6600">投保须知>></a>',
+    'price' => '500.00',
+    'unit' => '17',
+    'currencyid' => '6',
+  ),
+  1 => 
+  array (
     'aid' => '16',
     'siteid' => '1',
     'title' => '普通换箱',
@@ -13,7 +26,7 @@ return array (
     'unit' => '16',
     'currencyid' => '6',
   ),
-  1 => 
+  2 => 
   array (
     'aid' => '17',
     'siteid' => '1',
@@ -27,7 +40,7 @@ return array (
     'unit' => '16',
     'currencyid' => '6',
   ),
-  2 => 
+  3 => 
   array (
     'aid' => '19',
     'siteid' => '1',
@@ -40,7 +53,7 @@ return array (
     'unit' => '16',
     'currencyid' => '6',
   ),
-  3 => 
+  4 => 
   array (
     'aid' => '22',
     'siteid' => '1',
@@ -53,7 +66,7 @@ return array (
     'unit' => '16',
     'currencyid' => '6',
   ),
-  4 => 
+  5 => 
   array (
     'aid' => '24',
     'siteid' => '1',
@@ -66,7 +79,7 @@ return array (
     'unit' => '16',
     'currencyid' => '6',
   ),
-  5 => 
+  6 => 
   array (
     'aid' => '25',
     'siteid' => '1',
@@ -79,7 +92,7 @@ return array (
     'unit' => '16',
     'currencyid' => '6',
   ),
-  6 => 
+  7 => 
   array (
     'aid' => '32',
     'siteid' => '1',
@@ -95,7 +108,7 @@ return array (
     'unit' => '16',
     'currencyid' => '6',
   ),
-  7 => 
+  8 => 
   array (
     'aid' => '33',
     'siteid' => '1',
@@ -110,7 +123,7 @@ return array (
     'unit' => '16',
     'currencyid' => '6',
   ),
-  8 => 
+  9 => 
   array (
     'aid' => '34',
     'siteid' => '1',
@@ -126,7 +139,7 @@ return array (
     'unit' => '16',
     'currencyid' => '6',
   ),
-  9 => 
+  10 => 
   array (
     'aid' => '35',
     'siteid' => '1',

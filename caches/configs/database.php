@@ -2,10 +2,10 @@
 
 return array (
 	'default' => array (
-		'hostname' => 'localhost',
+		'hostname' => 'kikurds.cybgglmkvezu.ap-northeast-1.rds.amazonaws.com',
 		'database' => 'axultrax',
-		'username' => 'root',
-		'password' => '123456',
+		'username' => 'kiku',
+		'password' => 'Juteng378084190',
 		'tablepre' => 't_',
 		'charset' => 'utf8',
 		'type' => 'mysql',

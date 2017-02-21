@@ -78,8 +78,14 @@ class setting extends admin {
 			'from' => $_POST['mail_from'],
 			'auth_username' => $_POST['mail_user'],
 			'auth_password' => $_POST['mail_password']
-		);	
-		
+		);
+
+
+		if(!$_GET['mail_to'] || $_GET['mail_to'] == "") {
+			$_GET['mail_to'] = $_POST['mail_from'];
+		}
+
+
 		if(sendmail($_GET['mail_to'],$subject,$message,$_POST['mail_from'],$mail)) {
 			echo L('test_email_succ').$_GET['mail_to'];
 		} else {

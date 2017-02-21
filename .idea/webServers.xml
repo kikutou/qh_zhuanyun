@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="5d5ffa41-cb8d-44af-9bdf-64532a74d8ed" name="zhuanyun" url="http://52.199.163.161">
+        <fileTransfer host="52.199.163.161" port="22" privateKey="$USER_HOME$/kiku.pem" rootFolder="/var/www/html/zhuanyun" accessType="SFTP" username="ubuntu" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

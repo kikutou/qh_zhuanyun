@@ -68,16 +68,16 @@
 					{/loop}
 					</select></span>
 					
-				<label style="float:none;width:auto;padding-left:10px;">发货线路<em class="color-red">*</em></label>
-				<select  name="waybill[shippingid]" id="shippingid"  class="inp inp-select"  onchange="changeShipping() ">  
-					<option value="0"> 请选择 </option>
+				<label style="float:none;width:auto;padding-left:10px;display: none">发货线路<em class="color-red">*</em></label>
+				<select style="display: none"  name="waybill[shippingid]" id="shippingid"  class="inp inp-select"  onchange="changeShipping() ">
+					<!--<option value="0"> 请选择 </option>-->
 					{loop $allturnway $way}
 					
 					<option value="{$way[aid]}" {if $an_info[shippingid]==$way[aid]}selected{/if} org="{$way[origin]}" dst="{$way[destination]}" price="{$way[price]}"  addprice="{$way[addprice]}" addweight="{$way[addweight]}" firstweight="{$way[firstweight]}" otherdiscount="{$way[discount]}">{$way[title]}</option>
 					
 					{/loop}
 					</select> 
-					<label {if $an_info[status]!=8}style="display:none;"{/if} style="float:none;width:auto;color:#888;font-size: 12px;padding-left:10px;">(更换线路，下方运费预算可实时计算；未付款前均可更换发货线路)</label>
+					<label style="display: none" {if $an_info[status]!=8}style="display:none;"{/if} style="float:none;width:auto;color:#888;font-size: 12px;padding-left:10px;">(更换线路，下方运费预算可实时计算；未付款前均可更换发货线路)</label>
                 </li>  
                 
 				

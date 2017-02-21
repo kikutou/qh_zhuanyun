@@ -106,7 +106,7 @@
 														<th scope="col">物品名称</th>
 														<!--<th scope="col" >长x宽x高 </th>-->
 														<th scope="col" >收件人</th>
-														<th scope="col" >发货线路</th>
+														<!--<th scope="col" >发货线路</th>-->
 														<th scope="col" >重量(g)</th>
 														<th scope="col" >运费({L('unit_yuan')})</th>
 														<th scope="col" >操作</th>
@@ -130,7 +130,7 @@
 																	<!--<td scope="col" >{$package[bill_long]}x{$package[bill_width]}x{$package[bill_height]}</td>
 																	-->
 																	<td scope="col" >{$package[truename]}</td>
-																	<td scope="col" >{$package[shippingname]}</td>
+																	<!--<td scope="col" >{$package[shippingname]}</td>-->
 																	<td scope="col" >{$package[totalweight]}</td>
 																	<td scope="col" >{$package[payedfee]}</td>
 																	
@@ -142,7 +142,7 @@
 																	-->
 
 																	<td scope="col" ><a href="?m=waybill&c=index&a=pay&oid={$package[aid]}" onclick="return confirm('确认无误并支付?');">扣款</a>
-																	<a href="/index.php?m=waybill&c=index&a=editline&aid={$package[aid]}">更换线路</a></td>
+																	<!--<a href="/index.php?m=waybill&c=index&a=editline&aid={$package[aid]}">更换线路</a>--></td>
 																</tr>
 																<div>
 																	{$package[otherremark]}    

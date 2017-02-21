@@ -21,7 +21,7 @@ td,th{border:0px; padding:0px;}
 		{pc:get sql="select * from t_category where catid>11" num="9" return="data2"}
 				{loop $data2 $r}
 				{if $r[catid]==18 || $r[catid]==20 || $r[catid]==21}
-          <td width="152" align="center" valign="top" bgcolor="#667503"><label class="t_kind">{$r[catname]}</label></td>
+          <td width="152" align="center" valign="top" bgcolor="#1a7599"><label class="t_kind">{$r[catname]}</label></td>
 				{/if}
 			{/loop}
 		{/pc}
@@ -29,7 +29,7 @@ td,th{border:0px; padding:0px;}
 		{pc:get sql="select * from t_category where catid>11" num="9" return="data3"}
 				{loop $data3 $rr}
 				{if $rr[catid]==12 || $rr[catid]==22 || $rr[catid]==23}
-          <td width="152" align="center" valign="top" bgcolor="#667503"><label class="t_kind">{$rr[catname]}</label></td>
+          <td width="152" align="center" valign="top" bgcolor="#1a7599"><label class="t_kind">{$rr[catname]}</label></td>
 				{/if}
 			{/loop}
 		{/pc}

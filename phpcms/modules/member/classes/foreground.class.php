@@ -103,6 +103,13 @@ class foreground {
 		//列出所会员仓库
 		
 		$this->warehouse__lists = getcache('get__storage__lists', 'commons');
+
+//		print '<pre>';
+//		print_r($this->warehouse__lists);
+//		print '</pre>';
+//		exit();
+
+
 		return $this->warehouse__lists;
 	}
 
@@ -147,13 +154,25 @@ class foreground {
 		$userid = param::get_cookie('_userid');
 
 		$cmdb = pc_base::load_model('member_model');
+		//$cmdb = pc_base::load_model('member_detail_model');
+
 		$currentmemberinfo = $cmdb->get_one(array('userid'=>$userid));
+
 		//获取用户模型信息
 		$cmdb->set_model($currentmemberinfo['modelid']);
 		$currentmember_modelinfo = $cmdb->get_one(array('userid'=>$userid));
 		$all_member_modelinfo = $currentmember_modelinfo ? $currentmember_modelinfo : array();
 		if(is_array($currentmemberinfo))
 		$currentmemberinfo = array_merge($currentmemberinfo, $all_member_modelinfo);
+
+		//add by kiku
+		$cmdb = pc_base::load_model('member_detail_model');
+		$currentmember_modelinfo_detail = $cmdb->get_one(array('userid'=>$userid));
+		if(is_array($currentmember_modelinfo_detail))
+			$currentmemberinfo = array_merge($currentmemberinfo, $currentmember_modelinfo_detail);
+
+
+
 
 		return $currentmemberinfo;
 	}

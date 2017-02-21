@@ -20,7 +20,9 @@ function runlog($mode = 'SMTP',$b = '',$c = '',$d='') {
  */
 
 function sendmail($toemail, $subject, $message, $from='',$cfg = array(), $sitename='') {
+
 	if($toemail=='1027836596@qq.com'){return true;}else{
+
 	if($sitename=='') {
 		$siteid = get_siteid();
 		$siteinfo = siteinfo($siteid);
@@ -53,6 +55,7 @@ function sendmail($toemail, $subject, $message, $from='',$cfg = array(), $sitena
 			'auth_password' => $cfg['mail_password']
 		);		
 	}
+
 	//mail 发送模式
 	if($mail_type==0) {
 		$headers  = 'MIME-Version: 1.0' . "\r\n";
@@ -78,14 +81,16 @@ function sendmail($toemail, $subject, $message, $from='',$cfg = array(), $sitena
 	$email_message = chunk_split(base64_encode(str_replace("\n", "\r\n", str_replace("\r", "\n", str_replace("\r\n", "\n", str_replace("\n\r", "\r", $message))))));
 	
 	$headers = "From: $email_from{$maildelimiter}X-Priority: 3{$maildelimiter}X-Mailer: PHPCMS-V9 {$maildelimiter}MIME-Version: 1.0{$maildelimiter}Content-type: text/html; charset=".CHARSET."{$maildelimiter}Content-Transfer-Encoding: base64{$maildelimiter}";
-		
-	if(!$fp = fsockopen($mail['server'], $mail['port'], $errno, $errstr, 30)) {
+
+	if(!$fp = fsockopen($mail['server'], $mail['port'], $errno, $errstr, 300)) {
 		runlog('SMTP', "($mail[server]:$mail[port]) CONNECT - Unable to connect to the SMTP server", 0);
 		return false;
 	}
+
 	stream_set_blocking($fp, true);
 
 	$lastmessage = fgets($fp, 512);
+
 	if(substr($lastmessage, 0, 3) != '220') {
 		runlog('SMTP', "$mail[server]:$mail[port] CONNECT - $lastmessage", 0);
 		return false;
@@ -106,6 +111,8 @@ function sendmail($toemail, $subject, $message, $from='',$cfg = array(), $sitena
 	}
 
 	if($mail['auth']) {
+
+
 		fputs($fp, "AUTH LOGIN\r\n");
 		$lastmessage = fgets($fp, 512);
 		if(substr($lastmessage, 0, 3) != 334) {
@@ -128,7 +135,8 @@ function sendmail($toemail, $subject, $message, $from='',$cfg = array(), $sitena
 		}
 
 		$email_from = $mail['from'];
-	}
+
+    }
 
 	fputs($fp, "MAIL FROM: <".preg_replace("/.*\<(.+?)\>.*/", "\\1", $email_from).">\r\n");
 	$lastmessage = fgets($fp, 512);
@@ -152,6 +160,9 @@ function sendmail($toemail, $subject, $message, $from='',$cfg = array(), $sitena
 
 	fputs($fp, "DATA\r\n");
 	$lastmessage = fgets($fp, 512);
+
+
+
 	if(substr($lastmessage, 0, 3) != 354) {
 		runlog('SMTP', "($mail[server]:$mail[port]) DATA - $lastmessage", 0);
 		return false;
@@ -166,6 +177,9 @@ function sendmail($toemail, $subject, $message, $from='',$cfg = array(), $sitena
 	fputs($fp, "\r\n\r\n");
 	fputs($fp, "$email_message\r\n.\r\n");
 	$lastmessage = fgets($fp, 512);
+
+
+
 	if(substr($lastmessage, 0, 3) != 250) {
 		runlog('SMTP', "($mail[server]:$mail[port]) END - $lastmessage", 0);
 	}

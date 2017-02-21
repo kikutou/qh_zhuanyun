@@ -66,7 +66,8 @@
                             				<input id="nickname" name="nickname"   value="{$memberinfo['nickname']}" maxlength="20" class="inp w208" type="text" tabindex="0">
 				                                                                 
                                         </li>
-                                        <li style="display:none;">
+                                        <!--<li style="display:none;">-->
+										<li style="display: none">
                                         	<label for="pingyingname">中文名拼音<em class="color-red"></em>:</label>
                             				<input id="pingyingname" name="info[pingyingname]"   value="{$memberinfo['pingyingname']}" maxlength="20" class="inp w208" type="text" tabindex="0">
 				                                                                 
@@ -150,18 +151,15 @@
                             				<input id="idcard" name="info[idcard]"   value="{$memberinfo['idcard']}" maxlength="20" class="inp w208" type="text" tabindex="10">
 				                                                               
                                         </li>
-										<li>
+										<li style="display: none">
                                         	<label for="idcard_fb">正面<em class="color-red"></em>:</label>
-                            				<!--<input id="idcard_fb" name="info[idcard_fb]"   value="" maxlength="20" class="inp w308" type="text" tabindex="11">-->
+                            				<input id="idcard_fb" name="info[idcard_fb]"   value="" maxlength="20" class="inp w308" type="text" tabindex="11">
 											{str_replace('statics/js/','resource/js/',$idcard_fb)}
-				                                                               
                                         </li>
-										<li>
+										<li style="display: none">
                                         	<label for="idcard_fe">反面<em class="color-red"></em>:</label>
-                            				<!--<input id="idcard_fe" name="info[idcard_fe]"   value="" maxlength="20" class="inp w308" type="text" tabindex="12">-->
+                            				<input id="idcard_fe" name="info[idcard_fe]"   value="" maxlength="20" class="inp w308" type="text" tabindex="12">
 											{str_replace('statics/js/','resource/js/',$idcard_fe)}
-
-				                           
                                         </li>
                                     </ul>
                                 </div><!--E .pro-info-v01-->
@@ -179,7 +177,7 @@
 										
 										
 										<li>
-                                        	<label for="nowconnect">QQ<em class="color-red"></em>:</label>
+                                        	<label for="nowconnect">微信号码<em class="color-red"></em>:</label>
                             				<input id="nowconnect" name="info[nowconnect]"   value="{$memberinfo['nowconnect']}" maxlength="20" class="inp w208" type="text" tabindex="8">
 				                                                               
                                         </li>

@@ -30,5 +30,19 @@ return array (
     'setting' => NULL,
     'siteid' => '0',
   ),
+  2 => 
+  array (
+    'linkageid' => '3374',
+    'name' => '韩国',
+    'style' => '0',
+    'parentid' => '0',
+    'child' => '0',
+    'arrchildid' => '',
+    'keyid' => '0',
+    'listorder' => '0',
+    'description' => '',
+    'setting' => NULL,
+    'siteid' => '0',
+  ),
 );
 ?>

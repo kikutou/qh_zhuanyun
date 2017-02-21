@@ -107,7 +107,7 @@ class admin_storage extends admin {
 			$listorder = intval($_POST['storage']['listorder']);
 			if($this->db->update($_POST['storage'], array('aid' => $_GET['aid']))){
 				$idd = intval($_GET['aid']);
-				/*$this->editlanguage($_POST['storage']['title'],'house__'.$idd);//更新语言
+				$this->editlanguage($_POST['storage']['title'],'house__'.$idd);//更新语言
 				
 				//更新仓库点是否显示
 				$menu_db = pc_base::load_model('menu_model');
@@ -133,7 +133,7 @@ class admin_storage extends admin {
 				$this->editlanguage($_POST['paifadian_name'],'house_paifa__'.$pointid3);//更新语言
 
 
-				*/
+				
 
 				//----------------------------------------------------------------------------------------------modify address begin
 				$c_area = pc_base::load_model('linkage_model');

@@ -32,11 +32,11 @@ return array(
 'execution_sql' => 0, //EXECUTION_SQL
 //UCenter配置开始
 'ucuse'=>'0',//是否开启UC
-'uc_api'=>'http://localhost/bbs/uc_server',//Ucenter api 地址
+'uc_api'=>'http://skyfaithjp.com/bbs/uc_server',//Ucenter api 地址
 'uc_ip'=>'',//Ucenter api IP
-'uc_dbhost'=>'localhost',//Ucenter 数据库主机名
-'uc_dbuser'=>'root',//Ucenter 数据库用户名
-'uc_dbpw'=>'123456',//Ucenter 数据库密码
+'uc_dbhost'=>'kikurds.cybgglmkvezu.ap-northeast-1.rds.amazonaws.com',//Ucenter 数据库主机名
+'uc_dbuser'=>'kiku',//Ucenter 数据库用户名
+'uc_dbpw'=>'Juteng378084190',//Ucenter 数据库密码
 'uc_dbname'=>'axultrax',//Ucenter 数据库名
 'uc_dbtablepre'=>'axultrax.pre_ucenter_',//Ucenter 数据库表前缀
 'uc_dbcharset'=>'utf8',//Ucenter 数据库字符集

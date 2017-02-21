@@ -193,9 +193,10 @@ function AddFavorite(title, url) {
                 </div>
                 <!--E 头部栏目-->
 				{php $sinfo=siteinfo(1);}
-            	<h1 class="fl logo"><a href="{siteurl($siteid)}/" title="{$SEO['site_title']}" style="background:url({$sinfo['logo']});">{$SEO['site_title']}</a></h1>
-               
-			<div style="float:left; padding-top: 50px; padding-left: 160px; font-family: 宋体; font-size: 18px; color:#747474;">统一客服热线：{$sinfo['public_tel']}</div>
+            	<!--<h1 class="fl logo"><a href="{siteurl($siteid)}/" title="{$SEO['site_title']}" style="background:url({$sinfo['logo']});">{$SEO['site_title']}</a></h1>-->
+				<h1 class="fl logo"><a href="http://skyfaithjp.com/" title="日本转运_日本亚马逊_乐天_日本海淘首选日本转运公司_日本转运" style="background:url(/uploadfile/2016/0618/20160618081814313.png);">日本转运_日本亚马逊_乐天_日本海淘首选日本转运公司_日本转运</a></h1>
+
+				<div style="float:left; padding-top: 50px; padding-left: 160px; font-family: 宋体; font-size: 18px; color:#747474;">统一客服热线：{$sinfo['public_tel']}</div>
 			<div style="float:right; padding-top:48px; width:103px;">
 				
                         {pc:get sql="SELECT * from t_poster where spaceid=11 and disabled=0 order by listorder " num="3"  return="addata" }

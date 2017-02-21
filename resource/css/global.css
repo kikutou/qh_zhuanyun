@@ -12,7 +12,7 @@ code,kbd,pre,samp{ font-family:courier new, courier, monospace}
 small{ font-size:12px}
 ol,ul{ list-style:none}
 a{ color:#333; text-decoration:none}
-a:hover,a:active,a:focus{ color:#F54302; text-decoration:underline; transition: color 0.15s linear 0s, background-color 0.3s linear 0s;}
+a:hover,a:active,a:focus{ color:#ff6664; text-decoration:none; transition: color 0.15s linear 0s, background-color 0.3s linear 0s;}
 sup{ vertical-align:text-top}
 sub{ vertical-align:text-bottom}
 legend{ color:#000}
@@ -114,7 +114,7 @@ code::selection {background:#0080C6;color:#FFF;}
 .layout,.main-wrap,.col-sub,.col-extra { *zoom:1;}
 /*image*/
 .header{ /*background-image:url(../images/home_hbg.jpg);*/ background:#f6f6f6;}
-.footer{background:#9eb40a;}
+.footer{background:#1D82AF;}
 .nav-mList .p-current a,.mod-shadow,.mod-hd,.nav-mList li a:hover,.nav-mList li.current a,.nav-mList li,.nav-mod{ }
 /*header*/
 .header{ width:100%; min-width:1008px; height:100px; background-repeat:repeat-x;}
@@ -174,12 +174,12 @@ code::selection {background:#0080C6;color:#FFF;}
      	.custom-list li{ float:left; padding:10px 0 0 16px;}
       /*nav*/
       .nav{ margin:0px auto 0; width:100%; height:39px;  position:relative; z-index:30; }    
-      	.nav-mod{ margin:0 auto; width:1078px; _width:1006px; height:39px; background-color:#9eb40a; background-repeat:repeat-x; position:relative; _border:1px solid #046298;}
+      	.nav-mod{ margin:0 auto; width:1078px; _width:1006px; height:39px; background-color:#1D82AF; background-repeat:repeat-x; position:relative; _border:1px solid #046298;}
         
         .nav-mList{ margin-left:-2px;}
         .nav-mList li{ float:left; height:39px; line-height:39px; background-position:right -104px; position:relative;}  
         .nav-mList li a{ display:block; padding:0 33px; _padding:0; _width:118px; _text-align:center; height:39px; font-size:15px; color:#FFF; position:relative; -webkit-transition: all 0.5s ease 0s; transition: all 0.5s ease 0s; font-family:微软雅黑,黑体,宋体;}
-        .nav-mList li.current a,.nav-mList li.current a:hover,.nav-mList li a:hover{ color:#0080C7; background-position: 0 -51px; background-repeat:repeat-x; text-decoration:none; text-shadow: 0 1px 1px rgba(255,255,255,0.1); background:#efefef; border-left:1px solid #9eb40a; height:38px;}
+        .nav-mList li.current a,.nav-mList li.current a:hover,.nav-mList li a:hover{ color:#0080C7; background-position: 0 -51px; background-repeat:repeat-x; text-decoration:none; text-shadow: 0 1px 1px rgba(255,255,255,0.1); background:#efefef; border-left:1px solid #1D82AF; height:38px;}
 	.crumbs{ padding-bottom:8px; color:#555;}
     	.crumbs a{ color:#36C}
         .crumbs a:hover{ color:#F54302;}
@@ -188,7 +188,7 @@ code::selection {background:#0080C6;color:#FFF;}
 .content{ position:relative; z-index:10;} */
 	/*mod*/
     .mod{ border:1px solid #CACACA; background-color:#FFF;}   
-    	.mod-hd{ line-height:35px; margin:0 10px 6px 10px; border-bottom:1px solid rgb(185, 165, 10); /*background-color:#EEE;*/ background-position:0 -156px; background-repeat:repeat-x; /*border-bottom:1px solid #CACACA; */position:relative;}
+    	.mod-hd{ line-height:35px; margin:0 10px 6px 10px; border-bottom:1px solid #63AECE; /*background-color:#EEE;*/ background-position:0 -156px; background-repeat:repeat-x; /*border-bottom:1px solid #CACACA; */position:relative;}
         	.mod-hd h3{ padding-left:12px; font-size:16px; color:rgb(107, 9, 121); /*font-weight:700; text-shadow: 0 1px 0 rgba(0,0,0,0.3);*/}
             .mod-hd .more-link{ display:block; height:22px; line-height:22px; color:#0179D3; position:absolute; top:6px; right:12px;}
          .mod-shadow{ padding:0px 10px 8px; background-position:0 -290px; background-repeat:no-repeat;}

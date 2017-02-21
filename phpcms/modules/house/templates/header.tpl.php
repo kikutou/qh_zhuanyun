@@ -18,10 +18,10 @@
 		<!--<a <?php if($_GET['a']=='house_jihuo_exception'){echo ' class="curr"';}?> href="?m=house&c=admin_house&a=house_jihuo_exception&hid=<?php echo $this->hid;?>"><?php echo L('status5');?></a> &nbsp;&nbsp;
 		-->
 		
-<input type="button" onclick="javascript:window.top.art.dialog({id:'scanning_gun_storage'}).close();window.top.art.dialog({id:'scanning_gun_storage',iframe:'?m=house&c=admin_house&a=scanning_gun_storage&hid=<?php echo $this->hid;?>', title:'<?php echo L('scanning_gun_storage')?>', width:'850', height:'450', lock:true}, function(){var d = window.top.art.dialog({id:'scanning_gun_storage'}).data.iframe;var form = d.document.getElementById('dosubmit');form.click();return false;}, function(){window.top.art.dialog({id:'scanning_gun_storage'}).close()});void(0);" value="<?php echo L('scanning_gun_storage')?>"/>
+<!--<input type="button" onclick="javascript:window.top.art.dialog({id:'scanning_gun_storage'}).close();window.top.art.dialog({id:'scanning_gun_storage',iframe:'?m=house&c=admin_house&a=scanning_gun_storage&hid=<?php echo $this->hid;?>', title:'<?php echo L('scanning_gun_storage')?>', width:'850', height:'450', lock:true}, function(){var d = window.top.art.dialog({id:'scanning_gun_storage'}).data.iframe;var form = d.document.getElementById('dosubmit');form.click();return false;}, function(){window.top.art.dialog({id:'scanning_gun_storage'}).close()});void(0);" value="<?php echo L('scanning_gun_storage')?>"/>-->
 		
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<input type="button" onclick="javascript:window.location.href='?m=waybill&c=admin_waybill&a=addorder&hid=<?php echo $this->hid;?>&checkhash=<?php echo $_GET['checkhash'];?>';" value="手工现金出单"/>
+<!--<input type="button" onclick="javascript:window.location.href='?m=waybill&c=admin_waybill&a=addorder&hid=<?php echo $this->hid;?>&checkhash=<?php echo $_GET['checkhash'];?>';" value="手工现金出单"/>-->
 				</div>
 		</td>
 		</tr>

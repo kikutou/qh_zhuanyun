@@ -429,7 +429,11 @@
                               </form>
                               <!--E <?php echo $pay['name'];?>充值-->
 							  
-                             <?php } else { ?>本站暂未开启在线支付功能，如需帮助请联系管理员。<?php } ?>
+                             <?php } else { ?>
+                                <p style="text-align: center">本站暂未开启在线支付功能，如需帮助请联系管理员。</p>
+                                <p style="text-align: center">管理员微信请扫描以下二维码</p>
+                                <p style="text-align: center"><img src="/uploadfile/2015/0713/20150713125225316.jpg"></p>
+                                <?php } ?>
 							
 
 

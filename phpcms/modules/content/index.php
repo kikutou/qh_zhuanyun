@@ -205,6 +205,8 @@ class index {
 		}
 		include template('content',$template);
 	}
+	
+	
 	//列表页
 	public function lists() {
 		$catid = $_GET['catid'] = intval($_GET['catid']);

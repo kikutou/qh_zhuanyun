@@ -48,7 +48,7 @@
                     <select  name="storageidd" id="storageid"  class="inp inp-select" onchange="document.getElementById('storagename').value=document.getElementById('storageid').options[document.getElementById('storageid').selectedIndex].text;"  >
 					
 					<?php $n=1;if(is_array($_all___warehouse__lists)) foreach($_all___warehouse__lists AS $vrow) { ?>
-					<?php if($vrow[aid]=15) { ?>
+					<?php if($vrow[aid]==15) { ?>
 					<option value="<?php echo $vrow['aid'];?>"><?php echo $vrow['title'];?></option>
 					<?php } ?>
 					<?php $n++;}unset($n); ?>
@@ -67,6 +67,7 @@
 					<?php $n++;}unset($n); ?>
 					</select>
 					</span>
+
 					<label style="float:none;width:auto;padding-left:10px;">发货线路<em class="color-red">*</em></label>
 				
 					<select  name="waybill[shippingid]" id="shippingid"   class="inp inp-select"  onchange="changeShipping()">  

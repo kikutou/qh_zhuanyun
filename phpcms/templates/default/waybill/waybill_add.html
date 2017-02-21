@@ -48,7 +48,7 @@
                     <select  name="storageidd" id="storageid"  class="inp inp-select" onchange="document.getElementById('storagename').value=document.getElementById('storageid').options[document.getElementById('storageid').selectedIndex].text;"  >
 					
 					{loop $_all___warehouse__lists $vrow}
-					{if $vrow[aid]=15}
+					{if $vrow[aid]=1}
 					<option value="{$vrow[aid]}">{$vrow[title]}</option>
 					{/if}
 					{/loop}
@@ -67,15 +67,15 @@
 					{/loop}
 					</select>
 					</span>
-					<label style="float:none;width:auto;padding-left:10px;">发货线路<em class="color-red">*</em></label>
+					<label style="float:none;width:auto;padding-left:10px;display: none">发货线路<em class="color-red">*</em></label>
 				
-					<select  name="waybill[shippingid]" id="shippingid"   class="inp inp-select"  onchange="changeShipping()">  
-					<option value="0"> 请选择 </option>
+					<select  name="waybill[shippingid]" id="shippingid"   class="inp inp-select"  onchange="changeShipping()" style="display: none">
+					<!--<option value="0"> 请选择 </option>-->
 					{loop $allturnway $way}					
 					<option value="{$way[aid]}" {if $an_info[shippingid]==$way[aid]}selected{/if} org="{$way[origin]}" dst="{$way[destination]}" price="{$way[price]}"  addprice="{$way[addprice]}" addweight="{$way[addweight]}" firstweight="{$way[firstweight]}" otherdiscount="{$way[discount]}">{$way[title]}</option>
 					{/loop}
 					</select> 
-					<label style="float:none;width:auto;color:#888;font-size: 12px;padding-left:10px;">(包裹付款前可更换发货线路)</label>
+					<label style="float:none;width:auto;color:#888;font-size: 12px;padding-left:10px;display: none">(包裹付款前可更换发货线路)</label>
                 </li>  
 				 </ul>
 		</div>
@@ -327,7 +327,7 @@
 			}
 			</script>
 
-			<div class="pcont-mod-bd pro-info" style="display:none;">
+<!--			<div class="pcont-mod-bd pro-info" style="display:none;">
                 <div class="balance-info">第四步：选择/填写收货人信息
 				<span style="color:#888;font-size: 12px;padding-left:10px;font-weight: normal;">(收货人信息在包裹付款前可更换)</span>
 				</div>
@@ -352,7 +352,7 @@
 				</ul>
 				 </div>
 
-					<!-- 新发货地址 -->
+					&lt;!&ndash; 新发货地址 &ndash;&gt;
 					<input type="hidden" value="2" name="send_address[addresstype]"  id="addresstype"  />
 					<div class="pro-info-v02" id="new_waybill_sendaddress" {if $addresslist}style="display:none"{/if}>
                                   
@@ -402,9 +402,9 @@
             
                 
                 </ul>
-                                </div><!--E .pro-info-v01-->
+                                </div>&lt;!&ndash;E .pro-info-v01&ndash;&gt;
 
-</div>
+</div>-->
 <div class="pcont-mod-bd pro-info" >
                <div class="balance-info">第四步：选择/填写收货人信息
 				<span style="color:#888;font-size: 12px;padding-left:10px;font-weight: normal;">(收货人信息在包裹付款前可更改)</span>

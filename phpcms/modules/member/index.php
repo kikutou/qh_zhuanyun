@@ -13,15 +13,25 @@ class index extends foreground {
 	private $times_db;
 	
 	function __construct() {
+
 		parent::__construct();
 		$this->http_user_agent = $_SERVER['HTTP_USER_AGENT'];
+
 		$this->memberinfo = $this->get_current_userinfo();
+
 		$this->current_user = $this->get_current_userinfo();
+
+
 	}
 
 	public function init() {
 		$sto = pc_base::load_model('storage_model');
-		$stor = $sto->get_one(" aid='15'");
+
+		//modified by kiku
+		//此处应该默认只取出第一个仓库
+		//$stor = $sto->get_one(" aid='15'");
+		$stor = $sto->get_one();
+
 		$memberinfo = $this->memberinfo;
 		//初始化phpsso
 		$phpsso_api_url = $this->_init_phpsso();
@@ -298,6 +308,7 @@ class index extends foreground {
 					$c_area = pc_base::load_model('linkage_model');
 					$addrdb = pc_base::load_model('address_model');
 					$all___warehouse__lists = $this->get_warehouse__lists();
+
 					foreach($all___warehouse__lists as $home){
 						
 						$val = $c_area->get_one(array('linkageid'=>$home['area']));
@@ -653,7 +664,7 @@ class index extends foreground {
 				$address_arr['username'] = $this->memberinfo['username'];
 				$address_arr['siteid'] = 1;
 				if(!empty($country) &&  !empty($province) && !empty($city) && !empty($address) && !empty($email) && !empty($truename) && !empty($mobile))
-					$addressdb->insert(safe_array_string($address_arr));
+					$addressdb->insert(safe_array_string($address_arr));																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																									
 			}
 			$this->db->set_model();
 			//更新用户昵称
@@ -669,27 +680,47 @@ class index extends foreground {
 			}
 			require_once CACHE_MODEL_PATH.'member_input.class.php';
 			require_once CACHE_MODEL_PATH.'member_update.class.php';
+
+
+
 			$member_input = new member_input($this->memberinfo['modelid']);
 
 
 			$email = safe_replace($_POST['info']['email']);
 			$mobile = safe_one_string($_POST['info']['mobile']);
 			
-			$this->db->update(array('mobile'=>$mobile,'email'=>$email), array('userid'=>$this->memberinfo['userid']));
+			$this->db->update(array('mobile'=>$mobile,'email'=>$email,'groupid'=>2), array('userid'=>$this->memberinfo['userid']));
 
 			unset($_POST['info']['email']);
 			unset($_POST['info']['mobile']);
 
-			$modelinfo = $member_input->get(safe_array_string($_POST['info']));
 
-			$this->db->set_model($this->memberinfo['modelid']);
-			$membermodelinfo = $this->db->get_one(array('userid'=>$this->memberinfo['userid']));
+
+			//add by kiku
+			$member_input = pc_base::load_model('member_detail_model');
+
+
+			//$modelinfo = $member_input->get(safe_array_string($_POST['info']));
+			$modelinfo = safe_array_string($_POST['info']);
+
+			//$this->db->set_model($this->memberinfo['modelid']);
+
+
+
+			$membermodelinfo = $member_input->get_one(array('userid'=>$this->memberinfo['userid']));
+			if(!empty($membermodelinfo)) {
+				$member_input->update($modelinfo, array('userid'=>$this->memberinfo['userid']));
+			} else {
+				$modelinfo['userid'] = $this->memberinfo['userid'];
+				$member_input->insert($modelinfo);
+			}
+/*			$membermodelinfo = $this->db->get_one(array('userid'=>$this->memberinfo['userid']));
 			if(!empty($membermodelinfo)) {
 				$this->db->update($modelinfo, array('userid'=>$this->memberinfo['userid']));
 			} else {
 				$modelinfo['userid'] = $this->memberinfo['userid'];
 				$this->db->insert($modelinfo);
-			}
+			}*/
 			
 			showmessage(L('operation_success'), 'index.php?m=member&siteid=1');
 		} else {
@@ -700,7 +731,16 @@ class index extends foreground {
 			$this->db->set_model($this->memberinfo['modelid']);
 			
 			$membermodelinfo = $this->db->get_one(array('userid'=>$this->memberinfo['userid']));
+
+			$member_input_detail = pc_base::load_model('member_detail_model');
+			$membermodelinfodetail = $member_input_detail->get_one(array('userid'=>$this->memberinfo['userid']));
+			if(is_array($membermodelinfodetail)){
+				$membermodelinfo = array_merge($membermodelinfo, $membermodelinfodetail);
+			}
+			$memberinfo = $membermodelinfo;
+
 			$forminfos = $forminfos_arr = $member_form->get($membermodelinfo);
+
 
 			//万能字段过滤
 			foreach($forminfos as $field=>$info) {
@@ -830,6 +870,7 @@ class index extends foreground {
 	}
 	
 	public function login() {
+
 		$this->_session_start();
 		//获取用户siteid
 		$siteid = isset($_REQUEST['siteid']) && trim($_REQUEST['siteid']) ? intval($_REQUEST['siteid']) : 1;

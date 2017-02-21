@@ -9,7 +9,7 @@ include $this->admin_tpl('header', 'admin');
 	<tr>
 		<th><?php echo L('service_type')?>：</th>
 		<td><select name="service[type]" id="service_type">
-		<?
+		<?php
 		foreach($this->valuecategory() as $v){
 			$sel="";
 			if ($an_info['type']==$v['value']){$sel=" selected";}

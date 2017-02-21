@@ -1,0 +1,6 @@
+# readme.txtをイグノアする
+/readme.txt
+
+# キャシュフォルダ全体をイグノアする
+/caches/
+/app/caches/

@@ -71,14 +71,14 @@
 					{/loop}
 					</select></span>
 					--->
-					<label style="float:none;width:auto;padding-left:10px;">发货线路<em class="color-red">*</em></label>
-					<select  name="waybill[shippingid]" id="shippingid"   class="inp inp-select"  onchange="changeShipping()">  
+					<label style="float:none;width:auto;padding-left:10px;display: none">发货线路<em class="color-red">*</em></label>
+					<select  name="waybill[shippingid]" id="shippingid"   class="inp inp-select"  onchange="changeShipping()" style="display: none">
 					<option value="0"> 请选择 </option>
 					{loop $allturnway $way}
 					<option value="{$way[aid]}" {if $an_info[shippingid]==$way[aid]}selected{/if} org="{$way[origin]}" dst="{$way[destination]}" price="{$way[price]}"  addprice="{$way[addprice]}" addweight="{$way[addweight]}" firstweight="{$way[firstweight]}" otherdiscount="{$way[discount]}">{$way[title]}</option>
 					{/loop}
 					</select> 
-					<label style="float:none;width:auto;color:#888;font-size: 12px;padding-left:10px;">(包裹未付款前可更换发货线路)</label>
+					<label style="float:none;width:auto;color:#888;font-size: 12px;padding-left:10px;display: none">(包裹未付款前可更换发货线路)</label>
                 </li>  
 				 </ul>
 				 </div>

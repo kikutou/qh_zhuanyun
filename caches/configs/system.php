@@ -27,7 +27,7 @@ return array(
 'js_path' => '/resource/js/', //CDN JS
 'css_path' => '/resource/css/', //CDN CSS
 'img_path' => '/resource/images/', //CDN img
-'app_path' => 'http://192.168.1.3/', //动态域名配置地址
+'app_path' => 'http://skyfaithjp.com/', //动态域名配置地址
 
 'charset' => 'utf-8', //网站字符集
 'timezone' => 'Etc/GMT-8', //网站时区（只对php 5.1以上版本有效），Etc/GMT-8 实际表示的是 GMT+8
@@ -44,7 +44,7 @@ return array(
 
 'phpsso' => '1',	//是否使用app
 'phpsso_appid' => '1',	//应用id	
-'phpsso_api_url' => 'http://192.168.1.3/app',	//接口地址
+'phpsso_api_url' => 'http://skyfaithjp.com/app',	//接口地址
 'phpsso_auth_key' => '408h4ww1vj15feczv4qhzboodx3526ra', //加密密钥
 'phpsso_version' => '1', //phpsso版本
 

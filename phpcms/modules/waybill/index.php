@@ -1031,7 +1031,7 @@ class index extends foreground{
 	public function waybill_detail(){
 		$bid = intval($_GET['bid']);
 		$info = $this->db->get_one("siteid='".$this->siteid."' and aid='$bid' and userid='$this->_userid' ");
-		
+
 		if(!$info){exit;}
 
 		$waybillid = trim($info['waybillid']);
@@ -1045,8 +1045,14 @@ class index extends foreground{
 		$mobile = $urow['mobile'];
 		
 		$s_row = $this->getshippingtypename($info['storageid']);
+
 		if($s_row){
 			$storagename=$s_row['title'];
+			/*
+			 * modified by chin on 20160804
+			 * */
+			$info['storagename'] = $storagename;
+			//^^^^^^^^^^^^^^^^^^^^^^^^end
 		}
 
 		$factweight=$info['factweight'];//实际重量
@@ -1191,7 +1197,8 @@ class index extends foreground{
 		$show_validator = 1;
 		if(isset($_POST['dosubmit'])) {
 			$_POST['waybill'] = $this->check($_POST['waybill']);
-			
+
+			//exit(var_dump($_POST['waybill']['storagename']));
 			if($_SESSION["isrepeat"] !=0){
 				//showmessage(L('operaction_repeat'), "/index.php?m=waybill&c=index&a=init&hid=".$this->hid);
 				//exit;
@@ -1258,7 +1265,6 @@ class index extends foreground{
 			$_POST['waybill']['storageid'] = intval($_POST['storageidd']);
 
 			$_POST['waybill']['status']=1;//未入库
-			
 			$address_db = pc_base::load_model('address_model');
 			if($_POST['waybill']['takeaddressid']==0){//新增收货地址,要保护进入地址里面
 				
@@ -1420,11 +1426,10 @@ $addFee=0;
 				$_POST['waybill']['totalship'] = $payedfee;
 				$_POST['waybill']['payedfee'] = floatval($_POST['waybill']['wayrate']) * floatval($_POST['waybill']['payfeeusd']);
 
-
+			//exit(var_dump($_POST['waybill']));
 			if($this->db->insert($_POST['waybill'])){
-				
-				$lastinsertid = $this->db->insert_id();
 
+				$lastinsertid = $this->db->insert_id();
 
 				$historydb = pc_base::load_model('waybill_history_model');
 			
@@ -1448,11 +1453,15 @@ $addFee=0;
 				
 			}
 		} else {
-			$shippingtypes = $this->getshippingtype();
-			$addresslist = $this->getaddresslist();
-			$servicelist = $this->getservicelist();
-			
 
+			//获取仓库信息
+			$shippingtypes = $this->getshippingtype();
+			
+			//获取本人地址和仓库地址
+			$addresslist = $this->getaddresslist();
+			
+			//增值服务
+			$servicelist = $this->getservicelist();
 
 			$_SESSION["isrepeat"]=0;
 			$waybilltm = str_replace('"date"','"date inp"',form::date('waybill[waybilltime]','',''));
@@ -1477,7 +1486,6 @@ $addFee=0;
 
 	public function edit() {
 		
-
 		$this->db2 = pc_base::load_model('currency_model');
 		$session_storage = 'session_'.pc_base::load_config('system','session_storage');
 		pc_base::load_sys_class($session_storage);
@@ -1498,7 +1506,6 @@ $addFee=0;
 
 			$address_db = pc_base::load_model('address_model');
 			if($_POST['waybill']['takeaddressid']==0){//新增收货地址,要保护进入地址里面
-				
 
 				$_POST['take_address']['siteid']=$this->siteid;
 				$_POST['take_address']['addresstype']=1;
@@ -1597,7 +1604,6 @@ $addFee=0;
 			//$_POST['waybill']['truename'] = $this->current_user['lastname'].$this->current_user['firstname'];
 			//$_POST['waybill']['storagename'] =  $this->storagename;
 			$_POST['waybill']['storageid'] = intval($_POST['storageidd']);
-
 
 			$_POST['waybill']['allvaluedfee'] = $addFee;
 			
